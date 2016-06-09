@@ -1,0 +1,40 @@
+{
+  "name": "sdp_search_members_node",
+  "version": "0.0.1",
+  "description": "Advanced Search for iQube Members",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "tap test.js -- --cov --coverage-report=lcov",
+    "test-ci": "istanbul cover test.js -- --cov --coverage-report=lcov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iQubeLabs/sdp_search_members_node.git"
+  },
+  "keywords": [
+    "search",
+    "sdp",
+    "elasticsearch",
+    "docker"
+  ],
+  "engine": "node >= 5.1.0",
+  "author": "iQube Labs",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iQubeLabs/sdp_search_members_node/issues"
+  },
+  "homepage": "https://github.com/iQubeLabs/sdp_search_members_node#readme",
+  "dependencies": {
+    "elasticsearch": "^11.0.1",
+    "express": "^4.13.4",
+    "glob": "^7.0.3",
+    "multer": "^1.1.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
+    "sinon": "^1.17.4",
+    "tap": "^5.7.2"
+  }
+}
