@@ -1,6 +1,5 @@
 'strict mode';
 
-const process = require('process');
 const express = require('express');
 const loadRoutes = require('./routes/load');
 const config = require('./config');
