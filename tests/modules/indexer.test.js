@@ -5,16 +5,16 @@ const sinon = require('sinon');
 const indexer = require(process.cwd() + '/modules/indexer.js');
 
 // test here is a tape instance
-module.exports = (test) => {
+module.exports = function(test){
 	const configMock = {
 		esClient: {
-			index: () => {}
+			index: function(){}
 		}
 	};
 
 	const esMock = sinon.mock(configMock.esClient);
 
-	test('indexer.index calls index on es and callback function', (t) => {
+	test('indexer.index calls index on es and callback function', function(t){
 		esMock.expects('index').once();
 		const index = indexer(configMock);
 
@@ -27,20 +27,20 @@ module.exports = (test) => {
 			name: 'full_name'
 		};
 
-		const callback = () => {};
+		const callback = function(){};
 
 		const mockObj = { cb: callback };
 		const expectation = sinon.mock(mockObj).expects('cb').once();
 
 		index.index('iqubers', 'members', input, mockObj.cb, mapping);
 
-		t.doesNotThrow(() => { esMock.verify(); }, 'verify that es clients index function is called once');
-		t.doesNotThrow(() => { expectation.verify(); }, 'verify that the callback function is called');
+		t.doesNotThrow(function(){ esMock.verify(); }, 'verify that es clients index function is called once');
+		t.doesNotThrow(function(){ expectation.verify(); }, 'verify that the callback function is called');
 
 		t.end();
 	});
 
-	test('indexer.indexAll calls index on es twice and callback function', (t) => {
+	test('indexer.indexAll calls index on es twice and callback function', function(t){
 		esMock.expects('index').twice();
 		const index = indexer(configMock);
 
@@ -58,15 +58,15 @@ module.exports = (test) => {
 			name: 'full_name'
 		};
 
-		const callback = () => {};
+		const callback = function(){};
 
 		const mockObj = { cb: callback };
 		const expectation = sinon.mock(mockObj).expects('cb').once();
 
 		index.indexAll('iqubers', 'members', input, mockObj.cb, mapping);
 
-		t.doesNotThrow(() => { esMock.verify(); }, 'verify that es clients index function is called once');
-		t.doesNotThrow(() => { expectation.verify(); }, 'verify that the callback function is called');
+		t.doesNotThrow(function(){ esMock.verify(); }, 'verify that es clients index function is called once');
+		t.doesNotThrow(function(){ expectation.verify(); }, 'verify that the callback function is called');
 
 		t.end();
 	});

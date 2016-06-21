@@ -1,6 +1,6 @@
 'use strict';
 
-const process = require('process');
+
 const elasticsearch = require('elasticsearch');
 
 const config = {
