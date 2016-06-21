@@ -2,7 +2,7 @@
 
 const config = require('../config');
 
-const searcher = (options) => {
+const searcher = function(options){
 
 	if(typeof options === 'undefined')	
 		options = {};
@@ -16,7 +16,7 @@ const searcher = (options) => {
 	 * Signature:
 	 * (index: String, type: String, inputData: String, callback: Function) => Void
 	 */
-	const simpleSearch = (index, type, query, callback) => {
+	const simpleSearch = function(index, type, query, callback){
 		
 	};
 
@@ -26,7 +26,12 @@ const searcher = (options) => {
 	 * Signature:
 	 * (index: String, type: String, query:Object, callback: Function) => Void
 	 */
-	const search = (index, type, query, callback) => {
+	const search = function(index, type, query, callback) {
+		es.search({
+			index: index,
+			type: type,
+			body: query
+		}).then(callback)
 	};
 
 	return {
